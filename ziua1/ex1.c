@@ -31,7 +31,9 @@ int main() {
 					}
 					free(mat[k]);
 				}
-				free(mat[i]);
+				for (int k = i; k < x; k++) {
+					free(mat[k]);
+				}
 				free(mat);
 				exit(1);
 			}
