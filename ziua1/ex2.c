@@ -11,7 +11,9 @@ int* my_int_realloc(int *v, int new_size, int old_size) {
 	int pos = 0;
 	while(pos < new_size && pos < old_size) {
 		new_vect[pos] = v[pos];
+		pos++;
 	}
+	free(v);
 	return new_vect;
 }
 

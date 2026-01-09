@@ -5,7 +5,7 @@
 int compare_string(const void *a, const void *b) {
 	char **str1 = (char**)a;
 	char **str2 = (char**)b;
-	return strncmp(*str1, *str2, 1);
+	return strcmp(*str1, *str2);
 }
 
 char *my_strdup(char *og_string) {
@@ -46,6 +46,7 @@ int main() {
 	free(mat);
 
 	char *string = malloc(100);
+	string[0] = 0; // sa gaseasca strcat un \0
 	strcat(string, buffer);
 	printf("%s\n", string);
 	strcat(string, world);
@@ -92,7 +93,6 @@ int main() {
 	}
 	new_string[pos] = '\0';
 	printf("%s\n%d\n", new_string, size);
-
-	//|Hello\0|World!\0|from\0|Alex\0
+	free(new_string);
 	return 0;
 }

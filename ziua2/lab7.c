@@ -49,7 +49,12 @@ TStudent *init_student(char *nume, char *grupa, float medie, int an, TBuget buge
 		return NULL;
 	}
 	this->nume = strdup(nume);
+	if (this->nume == NULL) {
+		free(this);
+		return NULL;
+	}
 	strncpy(this->grupa, grupa, 5);
+	this->grupa[5] = 0; // strncpy nu adauga \0
 	this->medie = medie;
 	this->an = an;
 	this->bugetare = bugetare;
@@ -138,6 +143,7 @@ int main() {
 	stud3 = NULL;
 	free_student(stud4);
 	stud4 = NULL;
+	stud6 = NULL;
 	free_student_with_null(&stud5);
 	free(student1.nume);
 	free(student2.nume);
